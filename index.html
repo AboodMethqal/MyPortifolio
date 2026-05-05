@@ -809,10 +809,12 @@
         </ul>
         <div style="display: flex; align-items: center; gap: 10px;">
             <a href="index-ar.html" class="lang-switch" title="Switch to Arabic">
-                <i class="fas fa-globe"></i> <span class="desktop-only">بالعربية</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                <span class="desktop-only">بالعربية</span>
             </a>
             <div class="mobile-menu-btn" id="menu-toggle">
-                <i class="fas fa-bars"></i>
+                <svg id="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <svg id="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </div>
         </div>
     </nav>
@@ -1142,8 +1144,9 @@
     <script>
         AOS.init({ duration: 1000, once: true, offset: 100 });
         
-        const navbar = document.getElementById('navbar');
         const menuToggle = document.getElementById('menu-toggle');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
         const navLinks = document.getElementById('nav-links');
         const navLinksArr = document.querySelectorAll('.nav-links a');
 
@@ -1154,17 +1157,20 @@
 
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            const icon = menuToggle.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
+            if (navLinks.classList.contains('active')) {
+                menuIcon.style.display = 'none';
+                closeIcon.style.display = 'block';
+            } else {
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+            }
         });
 
         navLinksArr.forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
-                const icon = menuToggle.querySelector('i');
-                icon.classList.add('fa-bars');
-                icon.classList.remove('fa-times');
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
             });
         });
     </script>
