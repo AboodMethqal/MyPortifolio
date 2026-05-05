@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdulrahman Methqal - CV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e293b;
+            --secondary: #3b82f6;
+            --accent: #6366f1;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #d1d5db;
+            color: var(--text-main);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        @media print {
+            body {
+                background-color: white;
+                margin: 0;
+                padding: 0;
+            }
+
+            .no-print-btn {
+                display: none !important;
+            }
+
+            .cv-container {
+                margin: 0 !important;
+                box-shadow: none !important;
+                width: 210mm !important;
+                height: 297mm !important;
+                max-width: none !important;
+                border: none !important;
+            }
+
+            .sidebar {
+                padding: 30px 25px !important;
+            }
+
+            .main-content {
+                padding: 35px 35px !important;
+            }
+
+            @page {
+                size: A4;
+                margin: 0;
+            }
+        }
+
+        .no-print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .no-print-btn:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .cv-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: var(--white);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 297mm;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            background: var(--primary);
+            color: var(--white);
+            padding: 40px 30px;
+        }
+
+        .profile-photo-container {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 30px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            background: #2d3748;
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sidebar-section {
+            margin-bottom: 25px;
+        }
+
+        .sidebar-title {
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        .contact-item {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .contact-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .contact-value {
+            font-size: 13px;
+            word-break: break-all;
+        }
+
+        .contact-value a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .skill-group {
+            margin-bottom: 20px;
+        }
+
+        .skill-group-title {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #cbd5e1;
+        }
+
+        .skill-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill-badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .lang-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+        .lang-level {
+            color: var(--text-light);
+            font-size: 12px;
+        }
+
+        /* Main Content Styling */
+        .main-content {
+            padding: 40px 40px;
+        }
+
+        header {
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .job-title {
+            font-size: 18px;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .profile-summary {
+            font-size: 14px;
+            color: var(--text-main);
+            text-align: justify;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: var(--border);
+        }
+
+        .experience-item,
+        .education-item {
+            margin-bottom: 18px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .item-role {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .item-company {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .item-date {
+            font-size: 12px;
+            color: var(--text-light);
+            font-weight: 500;
+            background: var(--bg-light);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .item-description {
+            list-style-type: none;
+        }
+
+        .item-description li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 5px;
+            font-size: 13.5px;
+        }
+
+        .item-description li::before {
+            content: '•';
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .cert-item {
+            background: var(--bg-light);
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 3px solid var(--secondary);
+        }
+
+        .cert-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .cert-issuer {
+            font-size: 11px;
+            color: var(--text-light);
+        }
+
+        .additional-skills {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .add-skill-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+        }
+
+        .add-skill-item svg {
+            color: var(--secondary);
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="no-print-btn" onclick="window.print()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        Save as PDF
+    </button>
+
+    <div class="cv-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="profile-photo-container">
+                <img src="Generated Image September 16, 2025 - 12_20AM.png" alt="Abdulrahman Methqal"
+                    class="profile-photo">
+            </div>
+
+            <section class="sidebar-section">
+                <h3 class="sidebar-title">Contact</h3>
+                <div class="contact-item">
+                    <span class="contact-label">Phone</span>
+                    <span class="contact-value">+967 770499151</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Email</span>
+                    <span class="contact-value"><a
+                            href="mailto:abdoemethqal7704@gmail.com">aboodezmethqal7704@gmail.com</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Address</span>
+                    <span class="contact-value">Marib, Yemen</span>
+                </div>
+            </section>
+
+            <section class="sidebar-section">
+                <h3 class="sidebar-title">Tech Skills</h3>
+
+                <div class="skill-group">
+                    <h4 class="skill-group-title">Languages</h4>
+                    <div class="skill-list">
+                        <span class="skill-badge">C++</span>
+                        <span class="skill-badge">C#</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">PHP</span>
+                        <span class="skill-badge">HTML/CSS</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h4 class="skill-group-title">Frameworks & Tools</h4>
+                    <div class="skill-list">
+                        <span class="skill-badge">Node.js</span>
+                        <span class="skill-badge">VS Code</span>
+                        <span class="skill-badge">Git/GitHub</span>
+                        <span class="skill-badge">MS Office</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h4 class="skill-group-title">Databases</h4>
+                    <div class="skill-list">
+                        <span class="skill-badge">MS Access</span>
+                        <span class="skill-badge">Oracle</span>
+                        <span class="skill-badge">Supabase</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sidebar-section">
+                <h3 class="sidebar-title">Languages</h3>
+                <div class="lang-item">
+                    <span>Arabic</span>
+                    <span class="lang-level">Native</span>
+                </div>
+                <div class="lang-item">
+                    <span>English</span>
+                    <span class="lang-level">Intermediate (B1)</span>
+                </div>
+            </section>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <header>
+                <h1>Abdulrahman Ezzaldeen Mohammed Methqal</h1>
+                <p class="job-title">Data Entry & Statistics Assistant / Full Stack Developer</p>
+                <div class="profile-summary">
+                    Motivated and self-driven third-year university student majoring in Computer Information Systems
+                    (CIS). I possess strong analytical skills, adaptability, and a deep interest in data management,
+                    programming, and system development. Passionate about building a successful career in the tech
+                    field, I specialize in web development using HTML, CSS, JavaScript, PHP, and Node.js, with hands-on
+                    experience in building full-stack applications.
+                </div>
+            </header>
+
+            <section class="section">
+                <h3 class="section-title">Work Experience</h3>
+
+                <div class="experience-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-role">Data Entry & Statistics Assistant</div>
+                            <div class="item-company">Healthcare Sector (Hospital)</div>
+                        </div>
+                        <span class="item-date">Present</span>
+                    </div>
+                    <ul class="item-description">
+                        <li>Assisted in managing and entering healthcare-related data ensuring 100% accuracy.</li>
+                        <li>Prepared comprehensive daily, weekly, and monthly reports for management.</li>
+                        <li>Managed structured data and supported network maintenance.</li>
+                        <li>Assisted in surveillance system configuration and troubleshooting.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-role">Freelance Programmer & Full Stack Developer</div>
+                            <div class="item-company">Self-Employed</div>
+                        </div>
+                        <span class="item-date">Freelance</span>
+                    </div>
+                    <ul class="item-description">
+                        <li>Developed full-stack web applications using modern technologies (Node.js, PHP).</li>
+                        <li>Built responsive, user-friendly interfaces with HTML, CSS, and JavaScript.</li>
+                        <li>Designed and managed relational databases for various client projects.</li>
+                        <li>Created small automation tools and desktop applications for local businesses.</li>
+                        <li>Designed CCTV systems and local network configurations for various facilities.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="section">
+                <h3 class="section-title">Education</h3>
+                <div class="education-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-role">Bachelor’s Degree in Computer Information Systems (CIS)</div>
+                            <div class="item-company">University of Sheba Region, Yemen</div>
+                        </div>
+                        <span class="item-date">3rd Year</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h3 class="section-title">Courses & Certifications</h3>
+                <div class="cert-grid">
+                    <div class="cert-item">
+                        <div class="cert-name">Introduction to Programming (Python)</div>
+                        <div class="cert-issuer">Coursera</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-name">Web Development (HTML, CSS, JS)</div>
+                        <div class="cert-issuer">Cisco</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-name">Database Design (MS Access)</div>
+                        <div class="cert-issuer">Udemy</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-name">Intermediate English Course</div>
+                        <div class="cert-issuer">British Council Yemen</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-name">Fundamentals of Computer Science</div>
+                        <div class="cert-issuer">Edraak</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-name">Surveillance Systems & Networking</div>
+                        <div class="cert-issuer">University of Sheba Region</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h3 class="section-title">Additional Skills</h3>
+                <div class="additional-skills">
+                    <div class="add-skill-item">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Desktop Application Development
+                    </div>
+                    <div class="add-skill-item">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Data Entry & Process Automation
+                    </div>
+                    <div class="add-skill-item">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Graphic Design for Print & Digital
+                    </div>
+                    <div class="add-skill-item">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Troubleshooting & Tech Support
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+
+</html>
